@@ -80,6 +80,9 @@ export const PropertyCategoriesSection: React.FC<PropertyCategoriesSectionProps>
                   src={cat.bgImage}
                   alt={cat.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80';
+                  }}
                   className="w-full h-full object-cover object-center opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>

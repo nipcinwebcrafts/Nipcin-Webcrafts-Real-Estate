@@ -125,8 +125,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#0F3D2E] via-[#17523F] to-[#C7A44D] p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+          <a href="#home" className="flex items-center gap-3 group shrink-0">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-[#0F3D2E] via-[#17523F] to-[#C7A44D] p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden shrink-0">
               <div className="w-full h-full bg-[#121212] rounded-[10px] flex items-center justify-center overflow-hidden p-0.5">
                 <img 
                   src={COMPANY_INFO.logoUrl} 
@@ -137,22 +137,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="font-['Playfair_Display',serif] text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-1">
+              <span className="font-['Playfair_Display',serif] text-lg sm:text-xl xl:text-2xl font-bold tracking-tight text-white flex items-center gap-1 whitespace-nowrap">
                 Nipcin <span className="text-[#C7A44D] italic font-normal">Webcrafts</span>
               </span>
-              <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-emerald-400/90 -mt-1">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-medium text-emerald-400/90 -mt-1 whitespace-nowrap">
                 Luxury Real Estate
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-['Inter',sans-serif]">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-7 text-xs xl:text-sm font-['Inter',sans-serif] shrink-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`transition-all duration-200 hover:text-[#C7A44D] relative py-1 font-medium ${
+                className={`transition-all duration-200 hover:text-[#C7A44D] relative py-1 font-medium whitespace-nowrap ${
                   isScrolled && theme === 'light' ? 'text-slate-700' : 'text-slate-200'
                 }`}
               >
@@ -162,15 +162,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Right Utilities & Actions */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2 xl:gap-2.5 shrink-0">
             
             {/* Currency Selector */}
-            <div className="relative group">
+            <div className="relative group shrink-0">
               <button 
                 onClick={() => onCurrencyChange(currency === 'USD' ? 'GHS' : 'USD')}
                 type="button"
                 title="Click to toggle currency or select from dropdown"
-                className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                className={`h-9 flex items-center gap-1 text-xs font-semibold px-2.5 xl:px-3 rounded-xl border transition-all cursor-pointer whitespace-nowrap ${
                   theme === 'dark' 
                     ? 'border-[#C7A44D]/40 text-white bg-white/5 hover:bg-[#C7A44D]/10 hover:border-[#C7A44D]' 
                     : 'border-slate-300 text-slate-800 bg-slate-100 hover:bg-slate-200'
@@ -213,8 +213,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Dark / Light Mode Toggle */}
             <button
               onClick={onThemeToggle}
+              type="button"
               title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
-              className={`p-2 rounded-lg border transition-colors ${
+              className={`h-9 w-9 flex items-center justify-center rounded-xl border transition-colors cursor-pointer shrink-0 ${
                 theme === 'dark'
                   ? 'border-white/15 text-amber-300 hover:bg-white/10'
                   : 'border-slate-300 text-slate-700 hover:bg-slate-200'
@@ -226,8 +227,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Property Search Modal Trigger */}
             <button
               onClick={onOpenSearch}
+              type="button"
               title="Search Properties"
-              className={`p-2 rounded-lg border transition-colors ${
+              className={`h-9 w-9 flex items-center justify-center rounded-xl border transition-colors cursor-pointer shrink-0 ${
                 theme === 'dark'
                   ? 'border-white/15 text-slate-200 hover:bg-white/10 hover:text-[#C7A44D]'
                   : 'border-slate-300 text-slate-700 hover:bg-slate-200 hover:text-[#0F3D2E]'
@@ -236,32 +238,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Wishlist Drawer Button */}
-            <button
-              onClick={onOpenWishlist}
-              title="Saved Properties"
-              className={`relative p-2 rounded-lg border transition-colors ${
-                theme === 'dark'
-                  ? 'border-white/15 text-slate-200 hover:bg-white/10'
-                  : 'border-slate-300 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              <Heart className={`w-4 h-4 ${wishlistCount > 0 ? 'text-rose-500 fill-rose-500' : ''}`} />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#C7A44D] text-[#0F3D2E] rounded-full text-[10px] font-bold flex items-center justify-center shadow-md animate-pulse">
-                  {wishlistCount}
-                </span>
-              )}
-            </button>
-
             {/* Book Inspection CTA */}
             <button
               onClick={onOpenInspectionModal}
-              className="relative group overflow-hidden rounded-xl p-[1px] focus:outline-none"
+              type="button"
+              className="relative inline-flex items-center justify-center shrink-0 rounded-xl p-[1px] group overflow-hidden focus:outline-none cursor-pointer self-center"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-[#C7A44D] via-[#E2C172] to-[#B38E37] rounded-xl transition-all duration-300 group-hover:opacity-90"></span>
-              <span className="relative px-4 py-2 rounded-[11px] bg-[#0F3D2E] group-hover:bg-[#0F3D2E]/80 text-white font-medium text-xs flex items-center gap-1.5 transition-colors">
-                <Calendar className="w-3.5 h-3.5 text-[#C7A44D]" />
+              <span className="relative h-9 px-3.5 xl:px-4 rounded-[11px] bg-[#0F3D2E] group-hover:bg-[#0F3D2E]/90 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors whitespace-nowrap">
+                <Calendar className="w-3.5 h-3.5 text-[#C7A44D] shrink-0" />
                 <span>Book Inspection</span>
               </span>
             </button>

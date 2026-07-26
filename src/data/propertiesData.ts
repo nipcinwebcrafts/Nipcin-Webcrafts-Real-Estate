@@ -20,10 +20,10 @@ export const INITIAL_PROPERTIES: Property[] = [
     garages: 4,
     featured: true,
     verified: true,
-    heroImage: '/src/assets/images/luxury_ghana_mansion_1784955497389.jpg',
+    heroImage: '/images/luxury_ghana_mansion_1784955497389.jpg',
     gallery: [
-      '/src/assets/images/luxury_ghana_mansion_1784955497389.jpg',
-      '/src/assets/images/luxury_penthouse_interior_1784955510247.jpg',
+      '/images/luxury_ghana_mansion_1784955497389.jpg',
+      '/images/luxury_penthouse_interior_1784955510247.jpg',
       'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80'
@@ -68,9 +68,9 @@ export const INITIAL_PROPERTIES: Property[] = [
     garages: 2,
     featured: true,
     verified: true,
-    heroImage: '/src/assets/images/luxury_penthouse_interior_1784955510247.jpg',
+    heroImage: '/images/luxury_penthouse_interior_1784955510247.jpg',
     gallery: [
-      '/src/assets/images/luxury_penthouse_interior_1784955510247.jpg',
+      '/images/luxury_penthouse_interior_1784955510247.jpg',
       'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80'

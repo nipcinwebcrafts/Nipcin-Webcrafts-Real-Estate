@@ -69,6 +69,9 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
                   src={prop.heroImage}
                   alt={prop.title}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80';
+                  }}
                   className="w-20 h-20 rounded-xl object-cover shrink-0"
                 />
 

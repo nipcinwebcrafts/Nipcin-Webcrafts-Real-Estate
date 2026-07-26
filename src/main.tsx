@@ -5,27 +5,47 @@ import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import './index.css';
 
 // Safely suppress background browser extension errors (e.g. MetaMask / Wallet provider failures)
-window.addEventListener('unhandledrejection', (event) => {
-  if (
-    event.reason &&
-    (event.reason.message?.includes('MetaMask') ||
-      event.reason.message?.includes('ethereum') ||
-      event.reason.message?.includes('wallet'))
-  ) {
-    event.preventDefault();
-  }
-});
+window.addEventListener(
+  'unhandledrejection',
+  (event) => {
+    const reasonMsg =
+      typeof event.reason === 'string'
+        ? event.reason
+        : event.reason?.message || '';
+    if (
+      reasonMsg.includes('MetaMask') ||
+      reasonMsg.includes('ethereum') ||
+      reasonMsg.includes('Failed to connect') ||
+      reasonMsg.includes('wallet') ||
+      reasonMsg.includes('extension')
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  },
+  true,
+);
 
-window.addEventListener('error', (event) => {
-  if (
-    event.message &&
-    (event.message.includes('MetaMask') ||
-      event.message.includes('ethereum') ||
-      event.message.includes('Failed to connect'))
-  ) {
-    event.preventDefault();
-  }
-});
+window.addEventListener(
+  'error',
+  (event) => {
+    const msg = event.message || '';
+    const filename = event.filename || '';
+    if (
+      msg.includes('MetaMask') ||
+      msg.includes('ethereum') ||
+      msg.includes('Failed to connect') ||
+      msg.includes('wallet') ||
+      filename.includes('extension') ||
+      filename.includes('chrome-extension') ||
+      filename.includes('moz-extension')
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  },
+  true,
+);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

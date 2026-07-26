@@ -11,16 +11,39 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => {
 
   useEffect(() => {
     const handleError = (event: ErrorEvent) => {
-      setHasError(true);
-      setErrorMessage(event.message || 'An unexpected runtime error occurred.');
-    };
-
-    const handleRejection = (event: PromiseRejectionEvent) => {
-      if (event.reason?.message?.includes('MetaMask') || event.reason?.message?.includes('ethereum')) {
+      const msg = event.message || '';
+      const filename = event.filename || '';
+      if (
+        msg.includes('MetaMask') ||
+        msg.includes('ethereum') ||
+        msg.includes('Failed to connect') ||
+        msg.includes('wallet') ||
+        filename.includes('extension') ||
+        filename.includes('chrome-extension') ||
+        filename.includes('moz-extension')
+      ) {
         return;
       }
       setHasError(true);
-      setErrorMessage(event.reason?.message || 'An unexpected promise rejection occurred.');
+      setErrorMessage(msg || 'An unexpected runtime error occurred.');
+    };
+
+    const handleRejection = (event: PromiseRejectionEvent) => {
+      const reasonMsg =
+        typeof event.reason === 'string'
+          ? event.reason
+          : event.reason?.message || '';
+      if (
+        reasonMsg.includes('MetaMask') ||
+        reasonMsg.includes('ethereum') ||
+        reasonMsg.includes('Failed to connect') ||
+        reasonMsg.includes('wallet') ||
+        reasonMsg.includes('extension')
+      ) {
+        return;
+      }
+      setHasError(true);
+      setErrorMessage(reasonMsg || 'An unexpected promise rejection occurred.');
     };
 
     window.addEventListener('error', handleError);
@@ -49,7 +72,7 @@ export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => {
               setErrorMessage(null);
               window.location.reload();
             }}
-            className="px-4 py-2 bg-[#0F3D2E] hover:bg-[#17523F] text-[#C7A44D] border border-[#C7A44D]/40 text-xs font-bold rounded-xl flex items-center justify-center gap-2 mx-auto transition-colors"
+            className="px-4 py-2 bg-[#0F3D2E] hover:bg-[#17523F] text-[#C7A44D] border border-[#C7A44D]/40 text-xs font-bold rounded-xl flex items-center justify-center gap-2 mx-auto transition-colors cursor-pointer"
           >
             <RefreshCw className="w-4 h-4" />
             <span>Reload Portal</span>

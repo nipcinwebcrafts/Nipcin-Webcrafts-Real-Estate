@@ -116,6 +116,9 @@ export const PropertyDetailModal: React.FC<PropertyDetailModalProps> = ({
                 src={property.gallery[selectedGalleryIdx] || property.heroImage}
                 alt={property.title}
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80';
+                }}
                 className="w-full h-full object-cover object-center"
               />
             </div>
@@ -130,7 +133,15 @@ export const PropertyDetailModal: React.FC<PropertyDetailModalProps> = ({
                     selectedGalleryIdx === idx ? 'border-[#C7A44D] scale-105' : 'border-transparent opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <img src={imgUrl} alt="Thumbnail" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+                <img 
+                  src={imgUrl} 
+                  alt="Thumbnail" 
+                  referrerPolicy="no-referrer" 
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80';
+                  }}
+                  className="w-full h-full object-cover" 
+                />
                 </button>
               ))}
             </div>

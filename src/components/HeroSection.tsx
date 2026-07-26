@@ -51,9 +51,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Background Image with Zoom/Parallax Effect */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="/src/assets/images/luxury_ghana_mansion_1784955497389.jpg"
+          src="/images/luxury_ghana_mansion_1784955497389.jpg"
           alt="Luxury Ghana Mansion Estate"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80';
+          }}
           className="w-full h-full object-cover object-center scale-105 animate-pulse duration-[10000ms]"
         />
         {/* Multilayer Luxury Gradient Overlays */}

@@ -43,7 +43,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     count: 12,
     iconName: 'Crown',
     description: 'Top-tier skyline luxury duplexes with private rooftop terraces and infinity pools.',
-    bgImage: '/src/assets/images/luxury_penthouse_interior_1784955510247.jpg'
+    bgImage: '/images/luxury_penthouse_interior_1784955510247.jpg'
   },
   {
     name: 'Commercial Buildings',
@@ -228,21 +228,21 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'gal-1',
     title: 'Sunset Infinity Pool at East Legon Mansion',
     category: 'Pools',
-    image: '/src/assets/images/luxury_ghana_mansion_1784955497389.jpg',
+    image: '/images/luxury_ghana_mansion_1784955497389.jpg',
     location: 'East Legon, Accra'
   },
   {
     id: 'gal-2',
     title: 'Skydeck Lounge & Penthouse Living Suite',
     category: 'Interiors',
-    image: '/src/assets/images/luxury_penthouse_interior_1784955510247.jpg',
+    image: '/images/luxury_penthouse_interior_1784955510247.jpg',
     location: 'Cantonments, Accra'
   },
   {
     id: 'gal-3',
     title: 'Nipcin Webcrafts Executive Consultation Lounge',
     category: 'Interiors',
-    image: '/src/assets/images/nipcin_luxury_office_1784955521897.jpg',
+    image: '/images/nipcin_luxury_office_1784955521897.jpg',
     location: 'Newtown, Accra'
   },
   {
