@@ -1,0 +1,6 @@
+{
+  "name": "Nipcin Webcrafts - Luxury Real Estate",
+  "description": "World-class luxury real estate website for Nipcin Webcrafts in Newtown, Accra, Ghana. Explore villas, penthouses, commercial buildings, book inspections, and search premium properties.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
